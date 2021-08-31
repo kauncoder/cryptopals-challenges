@@ -5,12 +5,10 @@ import (
 )
 
 func main () {
-    plaintext:="YELLOW SUBMARINE"
-    paddedBlockSize:=20
-    paddedBlock:=PadBlock(plaintext,paddedBlockSize)
-    fmt.Println("orignal block length: ",len(plaintext))
-    fmt.Println("padded block length: ",len(paddedBlock))
-    
+    	plaintext:="YELLOW SUBMARINE"
+    	paddedBlockSize:=20
+    	paddedBlock:=PadBlock(plaintext,paddedBlockSize)
+    	TestPadding (plaintext, paddedBlock)
 }
 
 func PadBlock(plaintext string,paddedBlockSize int) string {
@@ -26,3 +24,12 @@ func PadBlock(plaintext string,paddedBlockSize int) string {
         return string(plaintext)
         
 }
+
+
+func TestPadding ( plaintext string, paddedBlock string) {
+	
+        fmt.Println("orignal block length: ",len(plaintext))
+        fmt.Println("padded block length: ",len(paddedBlock))
+
+}
+
