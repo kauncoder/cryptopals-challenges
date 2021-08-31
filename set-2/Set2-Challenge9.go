@@ -7,13 +7,13 @@ import (
 func main () {
     plaintext:="YELLOW SUBMARINE"
     paddedBlockSize:=20
-    paddedBlock:=padBlock(plaintext,paddedBlockSize)
+    paddedBlock:=PadBlock(plaintext,paddedBlockSize)
     fmt.Println("orignal block length: ",len(plaintext))
     fmt.Println("padded block length: ",len(paddedBlock))
     
 }
 
-func padBlock(plaintext string,paddedBlockSize int) string {
+func PadBlock(plaintext string,paddedBlockSize int) string {
         
         textLength:=len(plaintext)
         var padByte byte = '\x04' //changes length with invisible padding
