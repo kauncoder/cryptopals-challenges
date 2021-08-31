@@ -12,14 +12,14 @@ func main(){
 	htob,_ := hex.DecodeString(str)
   
     //find most frequent single character in the cipher
-    maxchar:=findmaxchar(htob)
+    maxchar:=FindMaxChar(htob)
     
     //calculate keylist from maxchar and freqlist
     var maxscore int
     var finalkey byte
     for _,v:= range freqlist{
         k:=v^maxchar //k is the key
-        ks:=keyscore(htob,k) //returns weighted score for each key
+        ks:=KeyScore(htob,k) //returns weighted score for each key
         if ks>maxscore{
             maxscore = ks
             finalkey=k
@@ -34,7 +34,7 @@ func main(){
 }
 
 
-func findmaxchar(htob []byte) byte{
+func FindMaxChar(htob []byte) byte{
     
     freqscore := map[byte]int{}
     var maxfreq int
@@ -53,7 +53,7 @@ func findmaxchar(htob []byte) byte{
     return maxchar
 }
 
-func keyscore(htob []byte,keyx byte) int{
+func KeyScore(htob []byte,keyx byte) int{
     
     var decodedstring []byte
     var score int
