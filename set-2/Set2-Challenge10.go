@@ -14,13 +14,13 @@ func main () {
     key:="YELLOW SUBMARINE"
     IV:="\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
     fileName:="s2c10-data.txt"
-    stob:=decodeCipher(fileName)
-    plaintext:=decrypt(stob,[]byte(key),[]byte(IV))
+    stob:=DecodeCipher(fileName)
+    plaintext:=AESCBCdecrypt(stob,[]byte(key),[]byte(IV))
     fmt.Println(plaintext)
 }
 
 //use AES-CBC decryption to generate plaintext file
-func decrypt (cipherBytes []byte,key []byte,IV []byte) string {
+func AESCBCdecrypt (cipherBytes []byte,key []byte,IV []byte) string {
     keySize:=len(key)
     cipher, _ := aes.NewCipher(key)
     plaintext:=make([]byte,0)
@@ -42,7 +42,7 @@ func decrypt (cipherBytes []byte,key []byte,IV []byte) string {
 }
 
 //copy file contents and decode them from base64 to bytes
-func decodeCipher(fileName string) [] byte{
+func DecodeCipher(fileName string) [] byte{
     
     file,_:=os.Open(fileName)
     defer file.Close()
