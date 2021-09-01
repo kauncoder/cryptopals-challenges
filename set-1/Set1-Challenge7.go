@@ -37,6 +37,6 @@ func decrypt (cipherBytes []byte,key []byte) string {
     for i:=0;i<len(cipherBytes);i+=keySize {
         cipher.Decrypt(cipherBytes[i:i+keySize], cipherBytes[i:i+keySize])
     }
-    return string(cipherBytes) //can return this since decryption was done in place
+    return string(cipherBytes) //returns cipherBytes itself since the decryption was done in place
 }
                   
