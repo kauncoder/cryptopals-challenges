@@ -60,7 +60,7 @@ func EncryptAES (originaltext []byte) (string,string) {
     IV:=make([]byte,keySize)
     _, errIV := rand.Read(IV)
     if errIV != nil {
-        fmt.Println("error in key generation:", errIV)
+        fmt.Println("error in Initialization Vector generation:", errIV)
     }
     
     flipcoin:=GetRandomValueUnder256(2)
@@ -150,7 +150,7 @@ func AESECBEncrypt (plaintext []byte,key []byte) string {
     cipherblock:=make([]byte,keySize)
     cipher, errAES := aes.NewCipher(key)
     if errAES != nil {
-        fmt.Println("error in key generation:", errAES)
+        fmt.Println("error in AES initialization:", errAES)
     }
     //encrypt
     for i:=0;i<len(plaintext);i+=keySize {
@@ -169,7 +169,7 @@ func AESCBCEncrypt (plaintext []byte,IV []byte,key []byte) string {
     cipherblock:=make([]byte,keySize)
     cipher, errAES := aes.NewCipher(key)
     if errAES != nil {
-        fmt.Println("error in key generation:", errAES)
+        fmt.Println("error in AES initialization:", errAES)
     }
     
     //encrypt
